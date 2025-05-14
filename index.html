@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Country Name:<h1></h1>
+    Capital: <h2> </h2> 
+    Borders: <h3></h3>
+    Flag: <img src="" alt="">
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    let name = prompt("Enter c name")
+    axios.get(`https://restcountries.com/v3.1/name/${name}`)
+  .then(function (response) {
+    // handle success
+    console.log(response.data[0].name.official);
+    console.log(response.data[0].flags.png);
+    console.log(response.data[0].capital);
+    console.log(response.data[0].borders);
+    console.log(response.data[0]);
+    let h1 = document.querySelector('h1').textContent = response.data[0].name.official
+    let img = document.querySelector('img').src = response.data[0].flags.png
+    let h2 = document.querySelector('h2').textContent = response.data[0].capital
+    let h3 = document.querySelector('h3').textContent = response.data[0].borders
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+</script>
+
+</html>
+
+
+
+
